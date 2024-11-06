@@ -29,22 +29,22 @@
         }
 
         .wrapper {
-            width: 970px;
-            height: 970px;
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
         }
 
         .card {
-            width: 970px;
-            max-height: 970px;
-            min-height: 970px;
+            width: 90%;
+            height: 100%;
+            margin-top: 35px;
             background: white;
             border-radius: 42px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.48);
-            padding: 5px;
+            padding: 25px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -52,22 +52,22 @@
         }
 
         .content-container {
-            width: 820px;
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
         }
 
         .thumbnail {
-            width: 820px;
-            height: 400px;
+            width: 100%;
+            height: 50%;
             border-radius: 42px;
-            margin-top: 30px;
+            margin-top: 10px;
             object-fit: cover;
         }
 
         h2 {
-            font-size: 52px;
+            font-size: 40px;
             color: var(--sapphire);
             font-family: 'Rubik', sans-serif;
             font-weight: 500;
@@ -81,19 +81,23 @@
             font-family: 'Rubik', sans-serif;
             font-weight: 300;
             margin-top: 10px;
-            overflow: hidden;
             max-height: 420px;
+        }
+
+        .full-article-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .full-article {
             color: white;
-            font-size: 30px;
+            font-size: 40px;
             font-family: 'Rubik', sans-serif;
             font-weight: 500;
             text-align: center;
-            position: absolute;
-            bottom: -24px;
-            width: 100%;
+            margin-top: 30px;
         }
     </style>
 </head>
@@ -108,11 +112,13 @@
 </p>
             </div>
         </div>
-        <p class="full-article">Lees het volledige artikel op CINEMATEN.BE</p>
+        <div class="full-article-wrapper">
+            <p class="full-article">Klik op deze story en<br>lees het volledige artikel!</p>
+        </div>
     </div>
     <script>
         const paragraph = document.querySelector('.card p');
-        const maxHeight = 420;
+        const maxHeight = 750;
 
         function adjustFontSize() {
             const currentHeight = paragraph.scrollHeight;
