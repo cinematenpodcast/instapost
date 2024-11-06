@@ -1,1 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinematen.be News</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@100;200;300;400;500&display=swap');
 
+        :root {
+            --dark-purple: #320a28;
+            --sapphire: #1c59b4;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, var(--dark-purple), var(--sapphire));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .card {
+            width: 90%;
+            height: 100%;
+            margin-top: 35px;
+            background: white;
+            border-radius: 42px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.48);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .content-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 50%;
+            border-radius: 42px;
+            margin-top: 10px;
+            object-fit: cover;
+        }
+
+        h2 {
+            font-size: 40px;
+            color: var(--sapphire);
+            font-family: 'Rubik', sans-serif;
+            font-weight: 500;
+            margin-top: 20px;
+            margin-bottom: 0;
+        }
+
+        p {
+            font-size: 22pt;
+            color: var(--dark-purple);
+            font-family: 'Rubik', sans-serif;
+            font-weight: 300;
+            margin-top: 10px;
+            max-height: 420px;
+        }
+
+        .full-article-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .full-article {
+            color: white;
+            font-size: 40px;
+            font-family: 'Rubik', sans-serif;
+            font-weight: 500;
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="card">
+            <div class="content-container">
+                <img src="https://www.slashfilm.com/img/gallery/terminator-dark-fate-director-tim-miller-knows-exactly-what-went-wrong-with-the-movie/l-intro-1730914758.jpg
+" alt="News Thumbnail" class="thumbnail">
+                <h2>Cinematen.be - nieuws</h2>
+                <p>"Terminator: Dark Fate" is de zesde film in de serie en werd in 2019 uitgebracht. Het doden van John Connor in de eerste scène leidde tot veel ophef onder fans. De film viel tegen in de bioscopen, en zowel de regisseur als James Cameron geloven dat er een nieuwe richting nodig is voor de franchise. De verwachtingen waren hoog, maar de uitvoering viel tegen en teleurstelde veel fans.
+</p>
+            </div>
+        </div>
+        <div class="full-article-wrapper">
+            <p class="full-article">Klik op deze story en<br>lees het volledige artikel!</p>
+        </div>
+    </div>
+    <script>
+        const paragraph = document.querySelector('.card p');
+        const maxHeight = 750;
+
+        function adjustFontSize() {
+            const currentHeight = paragraph.scrollHeight;
+            if (currentHeight > maxHeight) {
+                const currentFontSize = parseFloat(window.getComputedStyle(paragraph).fontSize);
+                const newSize = Math.floor((maxHeight / currentHeight) * currentFontSize);
+                paragraph.style.fontSize = newSize + 'px';
+            }
+        }
+
+        adjustFontSize();
+    </script>
+</body>
+</html>
