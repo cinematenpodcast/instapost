@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cinematen.be News</title>
+<html><head><title>Cinematen.be News</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@100;200;300;400;500&display=swap');
 
@@ -100,9 +95,9 @@
             margin-top: 30px;
         }
     </style>
-</head>
-<body>
-    <div class="wrapper">
+
+
+    </head><body><div class="wrapper">
         <div class="card">
             <div class="content-container">
                 <img src="https://www.slashfilm.com/img/gallery/one-of-the-most-infamous-horror-movies-ever-is-finally-getting-a-reboot/l-intro-1731093186.jpg
@@ -116,20 +111,7 @@
             <p class="full-article">Klik op deze story en<br>lees het volledige artikel!</p>
         </div>
     </div>
-    <script>
-        const paragraph = document.querySelector('.card p');
-        const maxHeight = 750;
+    
 
-        function adjustFontSize() {
-            const currentHeight = paragraph.scrollHeight;
-            if (currentHeight > maxHeight) {
-                const currentFontSize = parseFloat(window.getComputedStyle(paragraph).fontSize);
-                const newSize = Math.floor((maxHeight / currentHeight) * currentFontSize);
-                paragraph.style.fontSize = newSize + 'px';
-            }
-        }
 
-        adjustFontSize();
-    </script>
-</body>
-</html>
+</body></html>
