@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thumbnail Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"], input[type="url"] {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="responseMessage" style="margin-bottom: 10px; color: green;"></div>
+        <h2>Cinematen Poster</h2>
+        <form id="thumbnailForm">
+            <label for="img1">Image 1 URL:</label>
+            <input type="url" id="img1" name="img1" required>
+
+            <label for="img2">Image 2 URL:</label>
+            <input type="url" id="img2" name="img2">
+
+            <label for="caption">Caption:</label>
+            <textarea id="caption" name="caption" rows="5" style="width: calc(100% - 20px); padding: 10px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 4px;" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('thumbnailForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const img1 = document.getElementById('img1').value;
+            const img2 = document.getElementById('img2').value || null;
+            const caption = document.getElementById('caption').value;
+            const webhookUrl = 'https://n8n.cinematen.be/webhook/cinematen-post';
+
+            const payload = {
+                img1: img1,
+                img2: img2 ? img2 : undefined,
+                caption: caption
+            };
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => {
+                if (response.ok) {
+                    response.text().then(text => {
+                        const responseMessage = document.getElementById('responseMessage');
+                        responseMessage.style.color = 'green';
+                        responseMessage.textContent = 'Success: ' + text;
+                    });
+                } else {
+                    const responseMessage = document.getElementById('responseMessage');
+                    responseMessage.style.color = 'red';
+                    responseMessage.textContent = 'Failed to submit images. Please check the webhook URL.';
+                }
+            })
+            .catch(error => {
+                const responseMessage = document.getElementById('responseMessage');
+                    responseMessage.style.color = 'red';
+                    responseMessage.textContent = 'Error: ' + error.message;
+            });
+        });
+    </script>
+</body>
+</html>
