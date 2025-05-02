@@ -29,8 +29,8 @@
         }
 
         .wrapper {
-            width: 970px;
-            height: 970px;
+            width: 1080px;
+            height: 1080px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -38,61 +38,69 @@
         }
 
         .card {
-            width: 970px;
-            max-height: 970px;
-            min-height: 970px;
+            width: 1000px;
+            height: 1000px;
             background: white;
             border-radius: 42px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.48);
-            padding: 5px;
+            padding: 30px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-evenly;
-            overflow: hidden;
+            justify-content: space-between;
             position: relative;
         }
 
         .content-container {
-            width: 820px;
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-    
+            justify-content: space-between;
+        }
+
+        .title-top {
+            font-size: 94px;
+            color: var(--sapphire);
+            font-family: 'Rubik', sans-serif;
+            font-weight: 700;
+            margin: 10px 0 20px 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
         }
 
         .images-container {
             display: flex;
             justify-content: center;
             width: 100%;
+            height: 675px;
+            margin: 0px 0;
+        }
+
+        .image-wrapper {
+            width: 80%;
+            height: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .image {
             width: 100%;
-            height: auto;
-            border-radius: 20px;
+            height: 100%;
             object-fit: cover;
+            border-radius: 20px;
         }
 
-        h1 {
-            font-size: 94px;
+        .title-bottom {
+            font-size: 110px;
             color: var(--sapphire);
             font-family: 'Rubik', sans-serif;
             font-weight: 700;
-            margin: 20px 0;
-            margin-bottom: 10px;
+            margin: 20px 0 10px 0;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-        }
-
-        p {
-            font-size: 22pt;
-            color: var(--dark-purple);
-            font-family: 'Rubik', sans-serif;
-            font-weight: 600;
-            margin-top: 10px;
-            overflow: hidden;
-            max-height: 420px;
         }
 
         .full-article {
@@ -102,7 +110,7 @@
             font-weight: 500;
             text-align: center;
             position: absolute;
-            bottom: -24px;
+            bottom: -30px;
             width: 100%;
         }
     </style>
@@ -111,14 +119,17 @@
     <div class="wrapper">
         <div class="card">
             <div class="content-container">
-                <h1>NIEUWE BONUS</h1>
+                <h1 class="title-top">NIEUWE BONUS</h1>
                 <div class="images-container">
-                    <img src="https://cdn.marvel.com/content/1x/ff5.jpg" class="image">
+                    <div class="image-wrapper">
+                        <img src="https://cdn.marvel.com/content/1x/ff5.jpg" class="image">
+                    </div>
                 </div>
-                <h1 style="font-size: 110px; margin-top: 10px">AFLEVERING</h1>
+                <h1 class="title-bottom">AFLEVERING</h1>
             </div>
         </div>
         <p class="full-article">Luister nu op Spotify via CINEMATEN.BE/LUISTER</p>
     </div>
 </body>
 </html>
+
