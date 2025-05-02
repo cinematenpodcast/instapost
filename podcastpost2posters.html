@@ -29,8 +29,8 @@
         }
 
         .wrapper {
-            width: 1080px;
-            height: 1080px;
+            width: 970px;
+            height: 970px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -38,69 +38,60 @@
         }
 
         .card {
-            width: 1000px;
-            height: 1000px;
+            width: 970px;
+            max-height: 970px;
+            min-height: 970px;
             background: white;
             border-radius: 42px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.48);
-            padding: 30px;
+            padding: 5px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
+            justify-content: space-evenly;
+            overflow: hidden;
             position: relative;
         }
 
         .content-container {
-            width: 100%;
-            height: 100%;
+            width: 820px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-        }
-
-        .title-top {
-            font-size: 94px;
-            color: var(--sapphire);
-            font-family: 'Rubik', sans-serif;
-            font-weight: 700;
-            margin: 10px 0 20px 0;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            justify-content: space-evenly;
         }
 
         .images-container {
             display: flex;
             justify-content: space-between;
             width: 100%;
-            height: 550px;
-            margin: 20px 0;
-        }
-
-        .image-wrapper {
-            width: 48%;
-            height: 100%;
-            border-radius: 20px;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
         .image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 48%;
+            height: auto;
             border-radius: 20px;
+            object-fit: cover;
         }
 
-        .title-bottom {
-            font-size: 110px;
+        h1 {
+            font-size: 94px;
             color: var(--sapphire);
             font-family: 'Rubik', sans-serif;
             font-weight: 700;
-            margin: 20px 0 10px 0;
+            margin: 50px 0;
+            margin-bottom: 30px;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        p {
+            font-size: 22pt;
+            color: var(--dark-purple);
+            font-family: 'Rubik', sans-serif;
+            font-weight: 600;
+            margin-top: 10px;
+            overflow: hidden;
+            max-height: 420px;
         }
 
         .full-article {
@@ -110,7 +101,7 @@
             font-weight: 500;
             text-align: center;
             position: absolute;
-            bottom: -40px;
+            bottom: -24px;
             width: 100%;
         }
     </style>
@@ -119,16 +110,12 @@
     <div class="wrapper">
         <div class="card">
             <div class="content-container">
-                <h1 class="title-top">NIEUWE PODCAST</h1>
+                <h1>NIEUWE PODCAST</h1>
                 <div class="images-container">
-                    <div class="image-wrapper">
-                        <img src="https://lumiere-a.akamaihd.net/v1/images/teaser_1sht_-_rgb_for_online_use_only_6b92ba3f.jpeg" class="image">
-                    </div>
-                    <div class="image-wrapper">
-                        <img src="https://raw.githubusercontent.com/cinematenpodcast/instapost/ca0dc42e0108e9c5aee527f2a244028287ced439/Schermafbeelding%202025-05-02%20115158.png" class="image">
-                    </div>
+                    <img src="https://lumiere-a.akamaihd.net/v1/images/teaser_1sht_-_rgb_for_online_use_only_6b92ba3f.jpeg" class="image">
+                    <img src="https://raw.githubusercontent.com/cinematenpodcast/instapost/ca0dc42e0108e9c5aee527f2a244028287ced439/Schermafbeelding%202025-05-02%20115158.png" class="image">
                 </div>
-                <h1 class="title-bottom">AFLEVERING</h1>
+                <h1 style="font-size: 110px; margin-top: 25px">AFLEVERING</h1>
             </div>
         </div>
         <p class="full-article">Luister nu op Spotify via CINEMATEN.BE/LUISTER</p>
