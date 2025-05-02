@@ -39,39 +39,41 @@
 
         .card {
             width: 970px;
-            max-height: 970px;
-            min-height: 970px;
+            height: 970px;
             background: white;
             border-radius: 42px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.48);
-            padding: 5px;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-evenly;
-            overflow: hidden;
+            justify-content: space-between;
             position: relative;
         }
 
         .content-container {
             width: 820px;
+            height: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-evenly;
+            justify-content: space-between;
         }
 
         .images-container {
             display: flex;
             justify-content: space-between;
             width: 100%;
+            flex: 1;
+            max-height: 60%;
+            padding: 20px 0;
         }
 
         .image {
             width: 48%;
-            height: auto;
+            max-height: 100%;
             border-radius: 20px;
-            object-fit: cover;
+            object-fit: contain;
         }
 
         h1 {
@@ -79,19 +81,17 @@
             color: var(--sapphire);
             font-family: 'Rubik', sans-serif;
             font-weight: 700;
-            margin: 50px 0;
-            margin-bottom: 30px;
+            margin: 0;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
         }
 
-        p {
-            font-size: 22pt;
-            color: var(--dark-purple);
-            font-family: 'Rubik', sans-serif;
-            font-weight: 600;
+        .title-top {
+            margin-bottom: 10px;
+        }
+
+        .title-bottom {
+            font-size: 110px;
             margin-top: 10px;
-            overflow: hidden;
-            max-height: 420px;
         }
 
         .full-article {
@@ -110,12 +110,12 @@
     <div class="wrapper">
         <div class="card">
             <div class="content-container">
-                <h1>NIEUWE PODCAST</h1>
+                <h1 class="title-top">NIEUWE PODCAST</h1>
                 <div class="images-container">
                     <img src="https://lumiere-a.akamaihd.net/v1/images/teaser_1sht_-_rgb_for_online_use_only_6b92ba3f.jpeg" class="image">
                     <img src="https://raw.githubusercontent.com/cinematenpodcast/instapost/ca0dc42e0108e9c5aee527f2a244028287ced439/Schermafbeelding%202025-05-02%20115158.png" class="image">
                 </div>
-                <h1 style="font-size: 110px; margin-top: 25px">AFLEVERING</h1>
+                <h1 class="title-bottom">AFLEVERING</h1>
             </div>
         </div>
         <p class="full-article">Luister nu op Spotify via CINEMATEN.BE/LUISTER</p>
