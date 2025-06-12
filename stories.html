@@ -3,133 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cinematen.be News</title>
+    <title>Storie-post-Cinematen.be</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@100;200;300;400;500&display=swap');
-
-        :root {
-            --dark-purple: #320a28;
-            --sapphire: #1c59b4;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
 
         * {
             box-sizing: border-box;
-        }
-
-        html, body {
-            height: 100%;
-            width: 100%;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom right, var(--dark-purple), var(--sapphire));
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        }
+
+        body, html {
+            width: 810px;
+            height: 1440px;
             overflow: hidden;
-        }
-
-        .wrapper {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-        }
-
-        .card {
-            width: 90%;
-            height: 100%;
-            margin-top: 35px;
-            background: white;
-            border-radius: 42px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.48);
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .content-container {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .thumbnail {
-            width: 100%;
-            height: 50%;
-            border-radius: 42px;
-            margin-top: 10px;
-            object-fit: cover;
-        }
-
-        h2 {
-            font-size: 40px;
-            color: var(--sapphire);
-            font-family: 'Rubik', sans-serif;
-            font-weight: 500;
-            margin-top: 20px;
-            margin-bottom: 0;
-        }
-
-        p {
-            font-size: 22pt;
-            color: var(--dark-purple);
-            font-family: 'Rubik', sans-serif;
-            font-weight: 300;
-            margin-top: 10px;
-            max-height: 420px;
-        }
-
-        .full-article-wrapper {
             position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            font-family: 'Rubik', sans-serif;
         }
 
-        .full-article {
+        /* Blurred background image */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.slashfilm.com/img/gallery/netflixs-oscar-contending-in-your-dreams-has-a-jaw-dropping-origin-story/l-intro-1749677963.jpg
+');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(75px);
+            z-index: -1;
+        }
+
+        /* Main container */
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Top image with margin */
+        .top-image {
+            width: calc(100% - 40px);
+            margin: 60px 20px 0 20px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Title container - takes remaining space between image and bottom text */
+        .title-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 30px;
+            width: 750px;
+            height: 770px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        /* Main title */
+        .title {
             color: white;
-            font-size: 40px;
             font-family: 'Rubik', sans-serif;
-            font-weight: 500;
+            font-weight: 800;
             text-align: center;
-            margin-top: 30px;
+            line-height: 1.1;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+            word-wrap: break-word;
+            hyphens: auto;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50pt;
+        }
+
+        /* Bottom text */
+        .bottom-text {
+            color: white;
+            font-family: 'Rubik', sans-serif;
+            font-weight: 400;
+            font-size: 28px;
+            text-align: center;
+            padding: 0 30px 40px 30px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
         }
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="card">
-            <div class="content-container">
-                <img src="https://www.slashfilm.com/img/gallery/the-new-superman-trailer-is-the-complete-opposite-of-man-of-steel-and-thats-fine/l-intro-1749664655.jpg
-" alt="News Thumbnail" class="thumbnail">
-                <h2>Cinematen.be - nieuws</h2>
-                <p>De eerste teaser voor James Gunns "Superman" toont een hoopvolle held, met David Corenswet als Clark Kent en Rachel Brosnahan als Lois Lane. De film verschijnt op 11 juli 2025 en markeert een nieuw hoofdstuk voor DC. We zien Superman als symbool van hoop en zijn hond Krypto. Iconische personages zoals Green Lantern zijn te zien. James Gunn bevestigt dat er geen CGI op het gezicht van Superman zit. De trailer bevat een gitaarversie van de "Superman March". Lex Luthor, gespeeld door Nicholas Hoult, is de tegenstander. Je kan de trailer nu bekijken op Cinematen.be!
-</p>
-            </div>
-        </div>
-        <div class="full-article-wrapper">
-            <p class="full-article">Ga naar CINEMATEN.BE/LEES<br>en lees het volledige artikel!</p>
-        </div>
-    </div>
-    <script>
-        const paragraph = document.querySelector('.card p');
-        const maxHeight = 750;
+    <!-- Blurred background -->
+    <div class="background"></div>
+    
+    <!-- Main content -->
+    <div class="container">
+        <!-- Top image -->
+        <img src="https://www.slashfilm.com/img/gallery/netflixs-oscar-contending-in-your-dreams-has-a-jaw-dropping-origin-story/l-intro-1749677963.jpg
+" id="topImage">
+        
+        <!-- Title container -->
+        <div class="title-container">
+            <h1 class="title" id="mainTitle">**Netflix animatiefilm In Your Dreams komt 14 november 2025, kans op Oscarnominatie**  
+*(78 karakters)*  
 
-        function adjustFontSize() {
-            const currentHeight = paragraph.scrollHeight;
-            if (currentHeight > maxHeight) {
-                const currentFontSize = parseFloat(window.getComputedStyle(paragraph).fontSize);
-                const newSize = Math.floor((maxHeight / currentHeight) * currentFontSize);
-                paragraph.style.fontSize = newSize + 'px';
+**Toelichting:**  
+- Benoemt duidelijk de filmtitel, streamingdienst, releasedatum en medium (animatiefilm).  
+- Vermeldt kernnieuwsfeit: Oscarkans (gebaseerd op trend uit artikel: Netflix's eerdere nominaties + Academy's openheid voor niet-traditionele studio's).  
+- Feitelijk en niet-teaserend: gebruikt "kans op" i.p.v. speculatieve taal.  
+- Voldoet aan maximale lengte (géén afkortingen zoals "Oscar-nom" nodig).</h1>
+        </div>
+        
+        <!-- Bottom text -->
+        <div class="bottom-text">Check onze instagram post voor meer info</div>
+    </div>
+
+    <script>
+        function adjustTitleSize() {
+            const title = document.getElementById('mainTitle');
+            
+            if (!title) {
+                console.log('❌ Title element not found!');
+                return;
+            }
+            
+            const titleText = title.textContent || title.innerText;
+            const characterCount = titleText.length;
+            
+            console.log('🔍 Adjusting title size...');
+            console.log('📝 Text:', titleText);
+            console.log('🔢 Character count:', characterCount);
+            
+            // Start with 50pt
+            let fontSize = 50;
+            
+            // Only reduce if over 115 characters  
+            if (characterCount > 115) {
+                const extraChars = characterCount - 115;
+                fontSize = Math.max(24, 50 - (extraChars * 1)); // Reduce by 1pt per extra character
+                console.log('⚠️ Text is over 115 chars (' + characterCount + ')');
+                console.log('📉 Extra chars:', extraChars);
+                console.log('🎯 Reducing font size to:', fontSize + 'pt');
+            } else {
+                console.log('✅ Text is ≤115 characters (' + characterCount + ')');
+                console.log('🎯 Keeping at:', fontSize + 'pt');
+            }
+            
+            // Apply the font size with !important to override CSS
+            title.style.setProperty('font-size', fontSize + 'pt', 'important');
+            console.log('✨ Applied font size:', fontSize + 'pt');
+            
+            // Double check what was actually applied
+            setTimeout(function() {
+                const actualSize = window.getComputedStyle(title).fontSize;
+                console.log('📏 Actual computed font size:', actualSize);
+            }, 100);
+        }
+        
+        function adjustImageAndTitle() {
+            const topImage = document.getElementById('topImage');
+            
+            // Set image height to maintain aspect ratio
+            if (topImage && topImage.naturalWidth && topImage.naturalHeight) {
+                const imageWidth = 810 - 40; // minus margins
+                const imageAspectRatio = topImage.naturalHeight / topImage.naturalWidth;
+                const imageHeight = imageWidth * imageAspectRatio;
+                topImage.style.height = imageHeight + 'px';
+                console.log('Image sized:', imageWidth + 'x' + imageHeight);
+            }
+            
+            // Adjust title size
+            adjustTitleSize();
+        }
+        
+        // Multiple trigger points to ensure the function runs
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, adjusting...');
+            setTimeout(adjustImageAndTitle, 100);
+        });
+        
+        window.addEventListener('load', function() {
+            console.log('Window loaded, adjusting...');
+            setTimeout(adjustImageAndTitle, 100);
+        });
+        
+        // Image load event
+        const img = document.getElementById('topImage');
+        if (img) {
+            img.addEventListener('load', function() {
+                console.log('Image loaded, adjusting...');
+                setTimeout(adjustImageAndTitle, 100);
+            });
+            
+            // If already loaded
+            if (img.complete) {
+                console.log('Image already complete, adjusting...');
+                setTimeout(adjustImageAndTitle, 100);
             }
         }
-
-        adjustFontSize();
+        
+        // Fallback after delay
+        setTimeout(function() {
+            console.log('Fallback adjustment...');
+            adjustImageAndTitle();
+        }, 1000);
     </script>
 </body>
 </html>
