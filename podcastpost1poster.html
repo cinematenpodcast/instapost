@@ -29,8 +29,8 @@
         }
 
         .wrapper {
-            width: 1080px;
-            height: 1080px;
+            width: 970px;
+            height: 1200px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -38,12 +38,13 @@
         }
 
         .card {
-            width: 1000px;
-            height: 1000px;
+            width: 970px;
+            max-height: 1200px;
+            min-height: 1200px;
             background: white;
             border-radius: 42px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.48);
-            padding: 30px;
+            padding: 5px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -52,7 +53,7 @@
         }
 
         .content-container {
-            width: 100%;
+            width: 900px;
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -61,12 +62,24 @@
         }
 
         .title-top {
-            font-size: 94px;
             color: var(--sapphire);
             font-family: 'Rubik', sans-serif;
             font-weight: 700;
-            margin: 10px 0 20px 0;
+            margin: 30px 0 40px 0;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            line-height: 0.9;
+        }
+        
+        .title-nieuwe {
+            font-size: 60px;
+            display: block;
+        }
+        
+        .title-bonus {
+            font-size: 120px;
+            display: block;
+            margin-top: 15px;
         }
 
         .images-container {
@@ -74,11 +87,11 @@
             justify-content: center;
             width: 100%;
             height: 675px;
-            margin: 0px 0;
+            margin: 20px 0;
         }
 
         .image-wrapper {
-            width: 80%;
+            width: 60%;
             height: 100%;
             border-radius: 20px;
             overflow: hidden;
@@ -99,7 +112,7 @@
             color: var(--sapphire);
             font-family: 'Rubik', sans-serif;
             font-weight: 700;
-            margin: 20px 0 10px 0;
+            margin: 40px 0 60px 0;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
         }
 
@@ -119,10 +132,13 @@
     <div class="wrapper">
         <div class="card">
             <div class="content-container">
-                <h1 class="title-top">NIEUWE BONUS</h1>
+                <h1 class="title-top">
+                    <span class="title-nieuwe">NIEUWE</span>
+                    <span class="title-bonus">PODCAST</span>
+                </h1>
                 <div class="images-container">
                     <div class="image-wrapper">
-                        <img src="https://cdn.marvel.com/content/1x/ff5.jpg" class="image">
+                        <img src="https://posterspy.com/wp-content/uploads/2024/12/Poster-SUPERMAN-Guardian-of-Metropolis-Grievity-V3-PS.jpg" class="image">
                     </div>
                 </div>
                 <h1 class="title-bottom">AFLEVERING</h1>
