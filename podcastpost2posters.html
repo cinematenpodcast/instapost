@@ -1,153 +1,297 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cinematen.be News</title>
+    <title>Cinematen Podcast</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@100;200;300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;800;900&display=swap');
 
-        :root {
-            --dark-purple: #320a28;
-            --sapphire: #1c59b4;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         html, body {
-            height: 100%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to bottom right, var(--dark-purple), var(--sapphire));
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            width: 1080px;
+            height: 1350px;
             overflow: hidden;
         }
 
-        .wrapper {
-            width: 970px;
-            height: 1200px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        .canvas {
+            position: relative;
+            width: 1080px;
+            height: 1350px;
+            overflow: hidden;
+            font-family: 'Rubik', sans-serif;
         }
 
+        /* ── BACKGROUND ── */
+        .bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 780px 680px at  8%  5%, rgba(103, 251, 233, 0.12) 0%, transparent 60%),
+                radial-gradient(ellipse 700px 620px at 92% 88%, rgba(158,  74, 117, 0.22) 0%, transparent 58%),
+                radial-gradient(ellipse 560px 460px at 80% 18%, rgba( 28,  89, 180, 0.28) 0%, transparent 55%),
+                radial-gradient(ellipse 480px 480px at 18% 82%, rgba(103, 251, 233, 0.08) 0%, transparent 55%),
+                linear-gradient(160deg, #060b14 0%, #0d0622 52%, #080518 100%);
+        }
+
+        /* ── DOT GRID ── */
+        .dots {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            pointer-events: none;
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.18) 1px, transparent 1px);
+            background-size: 22px 22px;
+        }
+
+        /* ── FILM GRAIN ── */
+        .grain {
+            position: absolute;
+            inset: 0;
+            z-index: 4;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 256px 256px;
+            opacity: 0.09;
+            mix-blend-mode: screen;
+        }
+
+        /* ── GLASS CARD — contains header + posters + announcement ── */
         .card {
-            width: 970px;
-            max-height: 1200px;
-            min-height: 1200px;
-            background: white;
-            border-radius: 42px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.48);
-            padding: 5px;
+            position: absolute;
+            top: 88px;
+            left: 24px;
+            right: 24px;
+            bottom: 88px;
+            background: linear-gradient(148deg, rgba(255,255,255,0.07) 0%, rgba(180,195,255,0.04) 100%);
+            backdrop-filter: blur(60px) saturate(180%) brightness(90%);
+            -webkit-backdrop-filter: blur(60px) saturate(180%) brightness(90%);
+            border-radius: 44px;
+            border: 1.5px solid rgba(255, 255, 255, 0.10);
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.50),
+                0 8px 28px rgba(0, 0, 0, 0.35),
+                inset 0 1.5px 0 rgba(255, 255, 255, 0.18),
+                inset 0 -1px   0 rgba(255, 255, 255, 0.05);
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
+            padding: 50px 46px 44px;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .card::before { display: none; }
+
+        /* ── HEADER ── */
+        .header {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 32px;
+            flex-shrink: 0;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .eyebrow-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #67fbe9;
+            box-shadow: 0 0 10px rgba(103, 251, 233, 1);
+        }
+
+        .eyebrow-text {
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.44em;
+            color: rgba(103, 251, 233, 0.85);
+            text-transform: uppercase;
+        }
+
+        .wordmark {
+            font-size: 108px;
+            font-weight: 900;
+            letter-spacing: 0.10em;
+            color: #f2aece;
+            text-transform: uppercase;
+            line-height: 1;
+            text-shadow: 0 2px 32px rgba(242, 174, 206, 0.4);
+        }
+
+        /* ── POSTERS — always 2:3 via aspect-ratio ── */
+        .posters {
+            width: 100%;
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            margin-bottom: 24px;
+            flex-shrink: 0;
+        }
+
+        .pw {
+            flex: 1;
+            aspect-ratio: 2 / 3;
+            border-radius: 20px;
+            overflow: hidden;
             position: relative;
         }
 
-        .content-container {
-            width: 900px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
+        /* left poster: mint-tinted glass frame */
+        .pw:first-child {
+            box-shadow:
+                0 24px 56px rgba(103, 251, 233, 0.12),
+                0 6px 20px rgba(0, 0, 0, 0.50),
+                inset 0 0 0 1.5px rgba(103, 251, 233, 0.35);
         }
 
-        .title-top {
-            color: var(--sapphire);
-            font-family: 'Rubik', sans-serif;
-            font-weight: 700;
-            margin: 30px 0 40px 0;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            line-height: 0.9;
-        }
-        
-        .title-nieuwe {
-            font-size: 60px;
-            display: block;
-        }
-        
-        .title-podcast {
-            font-size: 120px;
-            display: block;
-            margin-top: 15px;
+        /* right poster: pink-tinted glass frame */
+        .pw:last-child {
+            box-shadow:
+                0 24px 56px rgba(158, 74, 117, 0.12),
+                0 6px 20px rgba(0, 0, 0, 0.50),
+                inset 0 0 0 1.5px rgba(158, 74, 117, 0.35);
         }
 
-        .images-container {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            height: 675px;
-            margin: 20px 0;
+        /* colour highlight at top of each poster */
+        .pw:first-child::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2.5px;
+            background: linear-gradient(90deg, #67fbe9, rgba(103,251,233,0));
+            z-index: 3;
         }
 
-        .image-wrapper {
-            width: 48.5%;
-            height: 100%;
+        .pw:last-child::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2.5px;
+            background: linear-gradient(270deg, #9e4a75, rgba(158,74,117,0));
+            z-index: 3;
+        }
+
+        /* glass shimmer overlay */
+        .pw::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(130deg, rgba(255,255,255,0.10) 0%, transparent 36%);
+            pointer-events: none;
+            z-index: 2;
             border-radius: 20px;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
-        .image {
+        .pw img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 20px;
+            display: block;
         }
 
-        .title-bottom {
-            font-size: 110px;
-            color: var(--sapphire);
-            font-family: 'Rubik', sans-serif;
-            font-weight: 700;
-            margin: 40px 0 60px 0;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-        }
-
-        .full-article {
-            color: white;
-            font-size: 30px;
-            font-family: 'Rubik', sans-serif;
-            font-weight: 500;
-            text-align: center;
-            position: absolute;
-            bottom: -30px;
+        /* ── NIEUWE AFLEVERING — inside card ── */
+        .announcement {
+            flex: 1;
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nieuwe-label {
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 0.52em;
+            color: rgba(103, 251, 233, 0.82);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .aflevering {
+            font-size: 116px;
+            font-weight: 900;
+            letter-spacing: 0.05em;
+            color: #a4c8f8;
+            text-transform: uppercase;
+            line-height: 0.92;
+            text-shadow: 0 4px 30px rgba(164, 200, 248, 0.35);
+        }
+
+        /* ── CTA — plain text on gradient, no glass ── */
+        .cta-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 30;
+        }
+
+        .cta-footer p {
+            font-size: 20px;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            color: rgba(255, 255, 255, 0.58);
+            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.50);
+        }
+
+        .cta-footer em {
+            font-style: normal;
+            color: #67fbe9;
+            font-weight: 600;
         }
     </style>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="canvas">
+
+        <div class="bg"></div>
+        <div class="dots"></div>
+        <div class="grain"></div>
+
+        <!-- Glass card: brand + posters -->
         <div class="card">
-            <div class="content-container">
-                <h1 class="title-top">
-                    <span class="title-nieuwe">NIEUWE</span>
-                    <span class="title-podcast">PODCAST</span>
-                </h1>
-                <div class="images-container">
-                    <div class="image-wrapper">
-                        <img src="https://image.tmdb.org/t/p/w1280/5lcxWLVAEICkFpuAiV1aMy7ZZj3.jpg" class="image">
-                    </div>
-                    <div class="image-wrapper">
-                        <img src="https://image.tmdb.org/t/p/w1280/8JpUphub2hsZQppIO9xliUIsyo0.jpg">
-                    </div>
+            <div class="header">
+                <div class="eyebrow">
+                    <div class="eyebrow-dot"></div>
+                    <span class="eyebrow-text">Podcast</span>
+                    <div class="eyebrow-dot"></div>
                 </div>
-                <h1 class="title-bottom">AFLEVERING</h1>
+                <div class="wordmark">CINEMATEN</div>
+            </div>
+
+            <div class="posters">
+                <div class="pw">
+                    <img src="https://image.tmdb.org/t/p/w1280/5lcxWLVAEICkFpuAiV1aMy7ZZj3.jpg" alt="Film 1">
+                </div>
+                <div class="pw">
+                    <img src="https://image.tmdb.org/t/p/w1280/8JpUphub2hsZQppIO9xliUIsyo0.jpg" alt="Film 2">
+                </div>
+            </div>
+
+            <div class="announcement">
+                <div class="nieuwe-label">Nieuwe</div>
+                <div class="aflevering">Aflevering</div>
             </div>
         </div>
-        <p class="full-article">Luister nu op Spotify via CINEMATEN.BE/LUISTER</p>
+
+        <!-- CTA directly on gradient -->
+        <div class="cta-footer">
+            <p>Luister nu via <em>cinematen.be/luister</em></p>
+        </div>
+
     </div>
 </body>
 </html>
